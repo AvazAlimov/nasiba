@@ -9,15 +9,14 @@ const scheme = mongoose.Schema({
   description: {
     type: String
   },
-  date: {
-    type: String
+  appointment: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Appointment",
+    require: true
   },
-  address: {
-    type: String
-  },
-  user: {
+  code: {
     type: String
   }
 });
 
-module.exports = mongoose.model("Appointment", scheme);
+module.exports = mongoose.model("Prize", scheme);
