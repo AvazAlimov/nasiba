@@ -4,7 +4,7 @@ exports.submit = (req, res) => {
   Prize.updateOne(
     {
       _id: req.body.id,
-      user: { $exists: false }
+      code: { $ne: "" }
     },
     {
       $set: {
