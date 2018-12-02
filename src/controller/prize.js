@@ -1,4 +1,3 @@
-const mongoose = require("mongoose");
 const Prize = require("../model/prize");
 
 exports.submit = (req, res) => {
@@ -12,7 +11,11 @@ exports.submit = (req, res) => {
         code: req.body.user
       }
     }
-  ).then(prizes => {
-    return res.status(200).json(prizes);
+  ).then(operation => {
+    if (operation.nModified > 0) {
+      return res.status(200).json({ code: req.body.user });
+    } else {
+      return res.status(400).json({});
+    }
   });
 };
